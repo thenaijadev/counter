@@ -13,14 +13,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,17 +40,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
               },
               builder: (context, state) {
-                return state is CounterStateAdded
-                    ? Text(
-                        state.value.toString(),
-                        style: const TextStyle(fontSize: 40),
-                      )
-                    : state is CounterInitial
-                        ? Text(
-                            state.value.toString(),
-                            style: const TextStyle(fontSize: 40),
-                          )
-                        : const SizedBox();
+                if (state is CounterInitial) {
+                  return Text(
+                    state.value.toString(),
+                    style: const TextStyle(fontSize: 40),
+                  );
+                }
+                if (state is CounterStateAdded) {
+                  return Text(
+                    state.value.toString(),
+                    style: const TextStyle(fontSize: 40),
+                  );
+                }
+                if (state is CounterStateSubstracted) {
+                  return Text(
+                    state.value.toString(),
+                    style: const TextStyle(fontSize: 40),
+                  );
+                } else {
+                  return const SizedBox();
+                }
               },
             ),
             TextButton(
@@ -73,11 +74,44 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            {context.read<CounterBloc>().add(const CounterAddEvent(add: 5))},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          FloatingActionButton(
+            onPressed: () => {
+              context.read<CounterBloc>().add(const CounterAddEvent(add: 1))
+            },
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: () => {
+              context
+                  .read<CounterBloc>()
+                  .add(const CounterSubstractEvent(minus: 1))
+            },
+            tooltip: 'minus',
+            child: const Icon(Icons.remove),
+          ),
+          FloatingActionButton(
+            onPressed: () => {
+              context
+                  .read<CounterBloc>()
+                  .add(const CounterDivideEvent(divide: 5))
+            },
+            tooltip: 'divide',
+            child: const Icon(Icons.percent),
+          ),
+          FloatingActionButton(
+            onPressed: () => {
+              context
+                  .read<CounterBloc>()
+                  .add(const CounterMultiplyEvent(multiply: 2))
+            },
+            tooltip: 'multiply',
+            child: const Icon(Icons.emergency_rounded),
+          ),
+        ],
       ),
     );
   }

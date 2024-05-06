@@ -9,15 +9,42 @@ sealed class CounterState extends Equatable {
 }
 
 final class CounterInitial extends CounterState {
-  final int value;
+  final double value;
   const CounterInitial({this.value = 0});
   @override
   List<Object> get props => [value];
 }
 
 class CounterStateAdded extends CounterState {
-  final int value;
+  final double value;
   const CounterStateAdded({
+    required this.value,
+  });
+  @override
+  List<Object> get props => [value];
+}
+
+class CounterStateSubstracted extends CounterState {
+  final double value;
+  const CounterStateSubstracted({
+    required this.value,
+  });
+  @override
+  List<Object> get props => [value];
+}
+
+class CounterStateDivided extends CounterState {
+  final double value;
+  const CounterStateDivided({
+    required this.value,
+  });
+  @override
+  List<Object> get props => [value];
+}
+
+class CounterStateMultiplied extends CounterState {
+  final double value;
+  const CounterStateMultiplied({
     required this.value,
   });
   @override

@@ -9,7 +9,7 @@ sealed class CounterEvent extends Equatable {
 }
 
 class CounterAddEvent extends CounterEvent {
-  final int add;
+  final double add;
 
   const CounterAddEvent({
     required this.add,
@@ -17,8 +17,25 @@ class CounterAddEvent extends CounterEvent {
 }
 
 class CounterSubstractEvent extends CounterEvent {
-  final int minusWhat;
+  final double minus;
+
   const CounterSubstractEvent({
-    required this.minusWhat,
+    required this.minus,
+  });
+}
+
+class CounterMultiplyEvent extends CounterEvent {
+  final double multiply;
+
+  const CounterMultiplyEvent({
+    required this.multiply,
+  });
+}
+
+class CounterDivideEvent extends CounterEvent {
+  final double divide;
+
+  const CounterDivideEvent({
+    required this.divide,
   });
 }
