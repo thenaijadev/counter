@@ -33,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             BlocBuilder<CounterBloc, CounterState>(
               builder: (context, state) {
-                return state is CounterStateAdded
+                return state is CounterStateOperated
                     ? Text(
                         state.value.toString(),
                         style: const TextStyle(fontSize: 40),

@@ -28,17 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             BlocConsumer<CounterBloc, CounterState>(
-              listener: (context, state) {
-                if (state is CounterStateAdded) {
-                  if (state.value % 5 == 0) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const ProfilePage(title: "Profile")));
-                  }
-                }
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 if (state is CounterInitial) {
                   return Text(
@@ -46,13 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 40),
                   );
                 }
-                if (state is CounterStateAdded) {
-                  return Text(
-                    state.value.toString(),
-                    style: const TextStyle(fontSize: 40),
-                  );
-                }
-                if (state is CounterStateSubstracted) {
+                if (state is CounterStateOperated) {
                   return Text(
                     state.value.toString(),
                     style: const TextStyle(fontSize: 40),

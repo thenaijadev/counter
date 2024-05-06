@@ -15,38 +15,9 @@ final class CounterInitial extends CounterState {
   List<Object> get props => [value];
 }
 
-class CounterStateAdded extends CounterState {
+class CounterStateOperated extends CounterState {
   final double value;
-  const CounterStateAdded({
-    required this.value,
-  });
-  @override
-  List<Object> get props => [value];
-}
-
-class CounterStateSubstracted extends CounterState {
-  final double value;
-  const CounterStateSubstracted({
-    required this.value,
-  });
-  @override
-  List<Object> get props => [value];
-}
-
-class CounterStateDivided extends CounterState {
-  final double value;
-  const CounterStateDivided({
-    required this.value,
-  });
-  @override
-  List<Object> get props => [value];
-}
-
-class CounterStateMultiplied extends CounterState {
-  final double value;
-  const CounterStateMultiplied({
-    required this.value,
-  });
+  const CounterStateOperated({required this.value});
   @override
   List<Object> get props => [value];
 }

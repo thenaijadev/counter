@@ -13,12 +13,12 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
       if (state is CounterInitial) {
         final double value = state.value;
-        emit(CounterStateAdded(value: value + addWhat));
+        emit(CounterStateOperated(value: value + addWhat));
       }
 
-      if (state is CounterStateAdded) {
+      if (state is CounterStateOperated) {
         final double value = state.value;
-        emit(CounterStateAdded(value: value + addWhat));
+        emit(CounterStateOperated(value: value + addWhat));
       }
     });
 
@@ -29,12 +29,13 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
       if (state is CounterInitial) {
         final double value = state.value;
-        emit(CounterStateSubstracted(value: value - minusWhat));
+        emit(CounterStateOperated(value: value - minusWhat));
       }
 
-      if (state is CounterStateSubstracted) {
+      if (state is CounterStateOperated) {
         final double value = state.value;
-        emit(CounterStateSubstracted(value: value - minusWhat));
+
+        emit(CounterStateOperated(value: value - minusWhat));
       }
     });
 
@@ -45,12 +46,12 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
       if (state is CounterInitial) {
         final double value = state.value;
-        emit(CounterStateDivided(value: value / divideWhat));
+        emit(CounterStateOperated(value: value / divideWhat));
       }
 
-      if (state is CounterStateDivided) {
+      if (state is CounterStateOperated) {
         final double value = state.value;
-        emit(CounterStateDivided(value: value / divideWhat));
+        emit(CounterStateOperated(value: value / divideWhat));
       }
     });
 
@@ -61,12 +62,12 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
       if (state is CounterInitial) {
         final double value = state.value;
-        emit(CounterStateMultiplied(value: value * multiplyWhat));
+        emit(CounterStateOperated(value: value * multiplyWhat));
       }
 
-      if (state is CounterStateMultiplied) {
+      if (state is CounterStateOperated) {
         final double value = state.value;
-        emit(CounterStateMultiplied(value: value * multiplyWhat));
+        emit(CounterStateOperated(value: value * multiplyWhat));
       }
     });
   }
